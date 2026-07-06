@@ -1,0 +1,72 @@
+name: "⚙️ System Report / Feature Request"
+description: "Report a system anomaly, performance issue, or propose an architectural change."
+title: "[SYS] "
+labels: ["🐛 bug:deterministic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧠 Automata Scripts — Technical Report
+        Obrigado por relatar o comportamento ou sugerir uma melhoria. Preencha os campos técnicos abaixo.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "🔍 Component & Layer"
+      description: "Qual parte da infraestrutura ou arquitetura foi afetada?"
+      options:
+        - "Core Runtime (C++/Go)"
+        - "Automation Pipeline (Bash/Python)"
+        - "Container / Sandbox Environment"
+        - "Telemetry & Data Persistence (SQLite/WAL)"
+        - "Network Sockets / IO Layer"
+        - "Other / Architectural Proposal"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: "💻 Environment Details"
+      description: "Ex: Ubuntu 22.04 LTS, Isolated Sandbox v2, Local CLI"
+      placeholder: "Descreva o ambiente de execução..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 Description"
+      description: "Descreva de forma clara e concisa a anomalia ou a proposta de mudança estrutural."
+      placeholder: "O que está acontecendo ou o que você deseja mudar?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "🔬 Technical Details & Logs"
+      description: "Cole aqui logs de erro, outputs de terminal, métricas de hardware ou trechos de código."
+      placeholder: "// Paste command outputs, stack traces, or telemetry logs here"
+      render: bash
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: "⚡ Expected vs Actual Behavior"
+      description: "O que o sistema deveria fazer e o que ele realmente fez?"
+      placeholder: |
+        Expected: 
+        Actual:
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "🛠️ Steps to Reproduce"
+      description: "Passo a passo sequencial para replicar o comportamento."
+      placeholder: |
+        1. Run command '...'
+        2. Initialize environment '...'
+        3. See error or resource spike
